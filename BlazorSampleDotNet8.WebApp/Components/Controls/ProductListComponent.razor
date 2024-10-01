@@ -1,0 +1,23 @@
+﻿@using BlazorSampleDotNet8.Core
+@using BlazorSampleDotNet8.UseCases.Products.Interfaces
+
+@inject IGetProductsByNameUseCase GetProductsByNameUseCase;
+
+<ul>
+    @foreach (var product in products)
+    {
+        <ProductListItemComponent Product="product" />
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public string NameFilter { get; set; } = "";
+
+    private List<Product> products = [];
+
+    override protected async Task OnParametersSetAsync()
+    {
+        products = await GetProductsByNameUseCase.ExecuteAsync(NameFilter);
+    }
+}

@@ -1,0 +1,10 @@
+﻿@using BlazorSampleDotNet8.Core
+
+<li>
+    @Product?.Name
+</li>
+
+@code {
+    [Parameter]
+    public Product? Product { get; set; }
+}

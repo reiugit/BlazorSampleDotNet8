@@ -1,0 +1,18 @@
+﻿@rendermode InteractiveServer
+
+<PageTitle>Product List</PageTitle>
+
+<h3>Product List</h3>
+
+<FilterInputBoxComponent NameFilterChanged="OnNameFilterChanged" />
+
+<ProductListComponent NameFilter="@nameFilter" />
+
+@code {
+    private string nameFilter = "";
+
+    private void OnNameFilterChanged(string value)
+    {
+        nameFilter = value;
+    }
+}

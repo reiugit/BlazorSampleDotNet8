@@ -1,0 +1,13 @@
+﻿Filter:
+
+<input type="text" class="ms-1 my-4" @oninput="OnInputHandler" />
+
+@code {
+    [Parameter]
+    public EventCallback<string> NameFilterChanged { get; set; }
+
+    private async Task OnInputHandler(ChangeEventArgs e)
+    {
+        await NameFilterChanged.InvokeAsync(e.Value?.ToString());
+    }
+}
